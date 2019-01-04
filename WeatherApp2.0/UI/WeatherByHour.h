@@ -9,6 +9,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherByHour : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *hourLable;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *tempertatureLable;
+
 @end
 
 NS_ASSUME_NONNULL_END
