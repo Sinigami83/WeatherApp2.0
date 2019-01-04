@@ -275,6 +275,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" prompt="123" id="Ffd-uR-7pm"/>
+                    <connections>
+                        <outlet property="cityNameLable" destination="k4j-u0-glH" id="2Bu-qR-yuw"/>
+                        <outlet property="descriptionLable" destination="f3S-pU-57Y" id="4qa-MC-S4I"/>
+                        <outlet property="tableView" destination="CiL-JC-nee" id="VEx-IU-cyU"/>
+                        <outlet property="temperatureInCityLable" destination="GbC-sa-iWg" id="Clc-cQ-YXa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
