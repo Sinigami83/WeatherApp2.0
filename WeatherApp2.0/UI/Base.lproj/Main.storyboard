@@ -22,16 +22,89 @@
                                 <rect key="frame" x="16" y="132" width="343" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellWeatherByHours" id="jis-C3-Qwp">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellWeatherByHours" rowHeight="120" id="jis-C3-Qwp">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jis-C3-Qwp" id="pfm-PM-FnX">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PG5-XC-m4s">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="119.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xV9-oQ-qPC">
+                                                        <size key="itemSize" width="100" height="119"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="yVg-vh-LlM">
+                                                            <rect key="frame" x="10" y="0.5" width="100" height="119"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="119"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eD4-PE-Lw9">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="119"/>
+                                                                        <subviews>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CdZ-sC-atV">
+                                                                                <rect key="frame" x="0.0" y="14" width="100" height="91"/>
+                                                                                <subviews>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Hour" text="Now" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oi-KU-LCz">
+                                                                                        <rect key="frame" x="33" y="0.0" width="34.5" height="20.5"/>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1gH-5G-YO6">
+                                                                                        <rect key="frame" x="25" y="20.5" width="50" height="50"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" constant="50" id="Pgg-ul-31s"/>
+                                                                                            <constraint firstAttribute="height" constant="50" id="qs5-oM-9bm"/>
+                                                                                        </constraints>
+                                                                                    </imageView>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Temperature" text="-3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cR-hF-XWu">
+                                                                                        <rect key="frame" x="41" y="70.5" width="18" height="20.5"/>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                </subviews>
+                                                                            </stackView>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="trailing" secondItem="CdZ-sC-atV" secondAttribute="trailing" id="5fh-Nm-EYO"/>
+                                                                            <constraint firstItem="CdZ-sC-atV" firstAttribute="centerY" secondItem="eD4-PE-Lw9" secondAttribute="centerY" id="8mr-9Y-Kgz"/>
+                                                                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="CdZ-sC-atV" secondAttribute="bottom" constant="14" id="Nql-YQ-BTW"/>
+                                                                            <constraint firstItem="CdZ-sC-atV" firstAttribute="leading" secondItem="eD4-PE-Lw9" secondAttribute="leading" id="ROr-RK-wz3"/>
+                                                                            <constraint firstItem="CdZ-sC-atV" firstAttribute="top" relation="lessThanOrEqual" secondItem="eD4-PE-Lw9" secondAttribute="top" constant="14" id="gBS-6v-5kv"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstItem="eD4-PE-Lw9" firstAttribute="leading" secondItem="yVg-vh-LlM" secondAttribute="leading" id="bgW-ah-vH6"/>
+                                                                <constraint firstItem="eD4-PE-Lw9" firstAttribute="top" secondItem="yVg-vh-LlM" secondAttribute="top" id="fnu-8J-gnM"/>
+                                                                <constraint firstAttribute="bottom" secondItem="eD4-PE-Lw9" secondAttribute="bottom" id="vJV-VF-FPl"/>
+                                                                <constraint firstAttribute="trailing" secondItem="eD4-PE-Lw9" secondAttribute="trailing" id="zY6-Vf-9NB"/>
+                                                            </constraints>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PG5-XC-m4s" firstAttribute="leading" secondItem="pfm-PM-FnX" secondAttribute="leading" id="Piw-aP-vQW"/>
+                                                <constraint firstAttribute="bottom" secondItem="PG5-XC-m4s" secondAttribute="bottom" id="Zhh-Ww-Tu7"/>
+                                                <constraint firstAttribute="trailing" secondItem="PG5-XC-m4s" secondAttribute="trailing" id="ewc-Wx-Fqx"/>
+                                                <constraint firstItem="PG5-XC-m4s" firstAttribute="top" secondItem="pfm-PM-FnX" secondAttribute="top" id="xiJ-Se-P5i"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellWeatherByDays" id="QY4-sf-Sfy">
-                                        <rect key="frame" x="0.0" y="72" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="148" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QY4-sf-Sfy" id="zl6-CF-M4Q">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
@@ -39,7 +112,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellWeatherDetail" id="p6W-DP-YoV">
-                                        <rect key="frame" x="0.0" y="116" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="192" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p6W-DP-YoV" id="K3A-dm-zUs">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
