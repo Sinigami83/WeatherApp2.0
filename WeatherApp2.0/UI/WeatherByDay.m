@@ -1,11 +1,14 @@
 //
+//  WeatherByDay.m
+//  WeatherApp2.0
+//
 //  Created by Nodir Latipov on 1/4/19.
 //  Copyright © 2019 Home. All rights reserved.
 //
 
-#import "WeatherDetailByToday.h"
+#import "WeatherByDay.h"
 
-@implementation WeatherDetailByToday
+@implementation WeatherByDay
 
 - (void)awakeFromNib {
     [super awakeFromNib];

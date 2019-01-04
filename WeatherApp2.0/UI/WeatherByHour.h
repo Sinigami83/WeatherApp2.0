@@ -7,7 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WeatherDetailByToday : UITableViewCell
+@interface WeatherByHour : UICollectionViewCell
 
 @end
 
