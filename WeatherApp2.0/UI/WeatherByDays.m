@@ -5,17 +5,20 @@
 
 #import "WeatherByDays.h"
 
+@interface WeatherByDays () <UITableViewDelegate, UITableViewDataSource>
+@end
+
 @implementation WeatherByDays
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeatherByDay"];
+    return cell;
 }
 
 @end

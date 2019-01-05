@@ -9,6 +9,7 @@
 #import "Section.h"
 #import "SectionRow.h"
 #import "WeatherByHours.h"
+#import "WeatherByDays.h"
 
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -81,7 +82,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1; //[self.dataForPrint count];
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -91,10 +92,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WeatherByHours* cell = [tableView dequeueReusableCellWithIdentifier:@"CellWeatherByHours"];
-    cell.weatherForOneDay = self.dataForPrint[indexPath.section].rows;
-    [cell.collectionView reloadData];
-    return cell;
+    if (indexPath.section == 0) {
+        WeatherByHours *cell = [tableView dequeueReusableCellWithIdentifier:@"CellWeatherByHours"];
+        cell.weatherForOneDay = self.dataForPrint[indexPath.section].rows;
+        [cell.collectionView reloadData];
+        return cell;
+    } else {//if (indexPath.row == 1 ) {
+        WeatherByDays* cell = [tableView dequeueReusableCellWithIdentifier:@"WeatherByDays"];
+        [cell.weatherByDayCellTableView reloadData];
+        return cell;
+    } 
 }
 
 #pragma mark - get
