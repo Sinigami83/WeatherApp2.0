@@ -46,6 +46,8 @@
      getWeatherWithCity:self.cityID
      onSuccess:^(NSArray *weathers) {
          self.weatherForCity = weathers;
+         self.temperatureInCityLable.text = [NSString stringWithFormat:@"%.0f", self.weatherForCity[0].temerature];
+         self.descriptionLable.text = self.weatherForCity[0].weatherDescription;
          [self reloadData];
      } onFailure:^(NSError *error) {
          NSLog(@"Error %@", [error localizedDescription]);
