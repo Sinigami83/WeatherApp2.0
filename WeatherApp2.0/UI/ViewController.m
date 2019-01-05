@@ -53,24 +53,25 @@
 {
     NSMutableArray *sections = [NSMutableArray array];
     NSMutableArray *rows = [NSMutableArray array];
+    NSUInteger hours = 0;
 
     NSDate *weatherDate = self.weatherForCity[0].date;
     for (WeatherForecastModel *w in self.weatherForCity) {
-        NSComparisonResult result = [self compareTwoDate:weatherDate
-                                              secondDate:w.date];
-        if (result != NSOrderedSame) {
+        if (hours == 8) {
             Section *s = [[Section alloc] init];
             s.title = [self.dateFormatter stringFromDate:weatherDate];
             s.rows = rows;
             [sections addObject:s];
             weatherDate = w.date;
             [rows removeAllObjects];
+            break;
         }
         SectionRow *row = [[SectionRow alloc] init];
         row.temperature = w.temerature;
         row.hour = w.hour;
         row.image = w.image;
         [rows addObject:row];
+        ++hours;
     }
     self.dataForPrint = sections;
     [self.tableView reloadData];

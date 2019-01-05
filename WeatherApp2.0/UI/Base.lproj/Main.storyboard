@@ -39,12 +39,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" estimatedRowHeight="120" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="cbN-mB-kXv">
-                                <rect key="frame" x="16" y="144" width="343" height="523"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="120" estimatedRowHeight="120" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="cbN-mB-kXv">
+                                <rect key="frame" x="16" y="135" width="343" height="532"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WeatherByHours" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellWeatherByHours" rowHeight="120" id="od7-MZ-Yo0" customClass="WeatherByHours">
-                                        <rect key="frame" x="0.0" y="18" width="343" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WeatherByHours" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellWeatherByHours" rowHeight="120" id="od7-MZ-Yo0" customClass="WeatherByHours">
+                                        <rect key="frame" x="0.0" y="55.5" width="343" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="od7-MZ-Yo0" id="F3Y-lf-AjA">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="120"/>
@@ -95,7 +95,7 @@
                                                                                 </subviews>
                                                                             </stackView>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="trailing" secondItem="bQn-fQ-UVC" secondAttribute="trailing" id="3G1-Fm-Faz"/>
                                                                             <constraint firstAttribute="bottom" secondItem="bQn-fQ-UVC" secondAttribute="bottom" constant="14.5" id="7em-i4-P71"/>
@@ -136,6 +136,41 @@
                                             <outlet property="collectionView" destination="xrR-Y8-5t9" id="uP7-I2-wvX"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherByDays" id="zlw-LK-WNP">
+                                        <rect key="frame" x="0.0" y="175.5" width="343" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zlw-LK-WNP" id="obD-8L-Gtk">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="efw-1k-zfH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="120"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <prototypes>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WeatherByDay" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherByDay" id="q3t-hz-hDe">
+                                                            <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q3t-hz-hDe" id="8ca-EJ-DOs">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </tableViewCellContentView>
+                                                            <accessibility key="accessibilityConfiguration" identifier="WeatherByDay"/>
+                                                        </tableViewCell>
+                                                    </prototypes>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="zlw-LK-WNP" id="5ja-x4-l3c"/>
+                                                        <outlet property="delegate" destination="zlw-LK-WNP" id="2Cb-0I-Ffj"/>
+                                                    </connections>
+                                                </tableView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="efw-1k-zfH" secondAttribute="bottom" id="2e1-jJ-IPS"/>
+                                                <constraint firstAttribute="trailing" secondItem="efw-1k-zfH" secondAttribute="trailing" id="Bcj-sK-t6R"/>
+                                                <constraint firstItem="efw-1k-zfH" firstAttribute="leading" secondItem="obD-8L-Gtk" secondAttribute="leading" id="VYu-4x-hri"/>
+                                                <constraint firstItem="efw-1k-zfH" firstAttribute="top" secondItem="obD-8L-Gtk" secondAttribute="top" id="vL0-96-e5V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="zLi-4I-DX0" id="MYn-NF-W0G"/>
@@ -152,11 +187,11 @@
                             <constraint firstAttribute="trailing" secondItem="25O-t0-CNB" secondAttribute="trailing" constant="16" id="7Xp-Mp-K4u"/>
                             <constraint firstItem="25O-t0-CNB" firstAttribute="top" secondItem="8GT-D4-36M" secondAttribute="bottom" id="DKW-mj-BZQ"/>
                             <constraint firstItem="ar7-vX-r1V" firstAttribute="leading" secondItem="U4w-mU-G8m" secondAttribute="leading" constant="16" id="G8T-iW-mIe"/>
-                            <constraint firstItem="cbN-mB-kXv" firstAttribute="bottom" secondItem="kBV-AQ-w9z" secondAttribute="top" id="IC0-g8-fRN"/>
+                            <constraint firstItem="cbN-mB-kXv" firstAttribute="bottom" secondItem="U4w-mU-G8m" secondAttribute="bottom" id="IC0-g8-fRN"/>
                             <constraint firstItem="cbN-mB-kXv" firstAttribute="leading" secondItem="U4w-mU-G8m" secondAttribute="leading" constant="16" id="asR-JJ-qEo"/>
                             <constraint firstAttribute="trailing" secondItem="cbN-mB-kXv" secondAttribute="trailing" constant="16" id="dG4-PL-NiF"/>
                             <constraint firstItem="ar7-vX-r1V" firstAttribute="top" secondItem="25O-t0-CNB" secondAttribute="bottom" id="dh3-nd-1Wb"/>
-                            <constraint firstItem="cbN-mB-kXv" firstAttribute="top" secondItem="3WW-aX-GGy" secondAttribute="bottom" constant="13" id="keN-Hj-TUI"/>
+                            <constraint firstItem="cbN-mB-kXv" firstAttribute="top" secondItem="3WW-aX-GGy" secondAttribute="bottom" constant="4" id="keN-Hj-TUI"/>
                             <constraint firstItem="3WW-aX-GGy" firstAttribute="leading" secondItem="U4w-mU-G8m" secondAttribute="leading" constant="16" id="qag-Ob-ZT0"/>
                             <constraint firstItem="3WW-aX-GGy" firstAttribute="top" secondItem="ar7-vX-r1V" secondAttribute="bottom" id="tKB-Eq-AiD"/>
                             <constraint firstItem="3WW-aX-GGy" firstAttribute="top" secondItem="ar7-vX-r1V" secondAttribute="bottom" id="tvr-3K-3fd"/>
