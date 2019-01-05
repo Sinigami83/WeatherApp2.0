@@ -7,6 +7,7 @@
 #import "LoadingDataFromServer.h"
 #import "WeatherForecastModel.h"
 #import "RowsForWeatherByHours.h"
+#import "RowsForWeatherByDays.h"
 #import "WeatherByHours.h"
 #import "WeatherByDays.h"
 
@@ -22,7 +23,8 @@
 @property (nonatomic, strong) NSNumber *cityID;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, strong) NSArray<WeatherForecastModel *> *weatherForCity;
-@property (nonatomic, strong) NSArray<RowsForWeatherByHours *> *dataForPrint;
+@property (nonatomic, strong) NSArray<RowsForWeatherByHours *> *weatherForOneDay;
+@property (nonatomic, strong) NSArray<RowsForWeatherByDays *> *weatherForWeak;
 
 @end
 
@@ -33,7 +35,8 @@
 
     self.cityID = @524901;
     self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"dd-MM-yyyy";
+    [self.dateFormatter setDateFormat:@"EEEE"];
+    //self.dateFormatter.dateFormat = @"dd-MM-yyyy";
     [self getWeatherFromServer];
 }
 
@@ -51,25 +54,8 @@
 
 - (void)reloadData
 {
-    self.dataForPrint = [self makeTableViewCellWeatherByHour];
-
-    NSMutableArray *sections = [NSMutableArray array];
-    NSMutableArray *rows = [NSMutableArray array];
-    
-    NSDate *weatherDate = self.weatherForCity[0].date;
-
-    for (WeatherForecastModel *w in self.weatherForCities) {
-        NSComparisonResult result = [self compareTwoDate:weatherDate secondDate:w.date];
-
-        if (result != NSOrderedSame) {
-            RowsForWeatherByHours *row = [[RowsForWeatherByHours alloc] init];
-            row.temperature = w.temerature;
-            row.hour = w.hour;
-            row.image = w.image;
-            [rows addObject:row];
-        }
-    }
-    self.dataForPrint = sections;
+    self.weatherForOneDay = [self makeTableViewCellWeatherByHour];
+    self.weatherForWeak = [self makeTableViewCellWeatherByDay];
 
     [self.tableView reloadData];
 }
@@ -90,6 +76,40 @@
     return rows;
 }
 
+- (NSArray *)makeTableViewCellWeatherByDay
+{
+    NSMutableArray *rows = [NSMutableArray array];
+
+    double temperatureMax = self.weatherForCity[0].temerature;
+    double temperatureMin = self.weatherForCity[0].temerature;
+    NSString *image = self.weatherForCity[0].image;
+
+    NSDate *weatherDate = self.weatherForCity[0].date;
+
+    for (WeatherForecastModel *w in self.weatherForCities) {
+        NSComparisonResult result = [self compareTwoDate:weatherDate secondDate:w.date];
+
+        if (result != NSOrderedSame) {
+            RowsForWeatherByDays *row = [[RowsForWeatherByDays alloc] init];
+            row.temperatureMax = temperatureMax;
+            row.temperatureMin = temperatureMin;
+            row.image = image;
+            row.dayName = [self.dateFormatter stringFromDate:w.date];
+            [rows addObject:row];
+        } else {
+            if (temperatureMax < w.temerature) {
+                temperatureMax = w.temerature;
+                image = w.image;
+            }
+            if (temperatureMin > w.temerature) {
+                temperatureMin = w.temerature;
+            }
+        }
+        weatherDate = w.date;
+    }
+    return rows;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -106,11 +126,12 @@
 {
     if (indexPath.section == 0) {
         WeatherByHours *cell = [tableView dequeueReusableCellWithIdentifier:@"CellWeatherByHours"];
-        cell.weatherForOneDay = self.dataForPrint;
+        cell.weatherForOneDay = self.weatherForOneDay;
         [cell.collectionView reloadData];
         return cell;
     } else {//if (indexPath.row == 1 ) {
         WeatherByDays* cell = [tableView dequeueReusableCellWithIdentifier:@"WeatherByDays"];
+        cell.weatherForWeek = self.weatherForWeak;
         [cell.weatherByDayCellTableView reloadData];
         return cell;
     } 

@@ -55,13 +55,14 @@
         _humidity   = humidity;
         _pressure   = pressure;
         _seaLevel   = seaLevel;
-        _temerature = [self temeratureOfWeather:tempertur];
+        _temerature = [self temperatureOfWeather:tempertur];
         //weather
         _weatherDescription = description;
         _image      = [NSString stringWithFormat:@"%@", icon];
         _weatherType = type;
         //other
-        _hour       = [self hourComponent:self.date];
+        _hour       = [[self dayHourComponents:self.date] hour];
+        _day        = [[self dayHourComponents:self.date] day];
     }
     return self;
 }
@@ -79,19 +80,20 @@
     return numberFormatter;
 }
 
-- (double)temeratureOfWeather:(NSNumber *)temperature
+- (double)temperatureOfWeather:(NSNumber *)temperature
 {
     NSNumberFormatter *numberFormatter = [self numberFormatter];
     NSString *stringFromNumber = [numberFormatter stringFromNumber:temperature];
     return stringFromNumber.doubleValue;
 }
 
-- (NSUInteger)hourComponent:(NSDate *)date
+- (NSDateComponents *)dayHourComponents:(NSDate *)date
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *hourComponent = [calendar components:NSCalendarUnitHour
-                                                         fromDate:date];
-    return [hourComponent hour];
+    NSCalendarUnit calendarUnit = NSCalendarUnitHour | NSCalendarUnitDay;
+    NSDateComponents *hourComponent = [calendar components:calendarUnit
+                                                  fromDate:date];
+    return hourComponent;
 }
 
 @end

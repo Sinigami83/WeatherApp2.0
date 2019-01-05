@@ -31,7 +31,7 @@
     RowsForWeatherByHours *row = self.weatherForOneDay[indexPath.row];
     NSString *hour = [NSString stringWithFormat:@"%lu", row.hour];
     cell.hourLable.text = hour;
-    cell.iconImageView.image = [UIImage imageNamed:row.image]; ;
+    cell.iconImageView.image = [UIImage imageNamed:row.image];
     cell.tempertatureLable.text = [NSString stringWithFormat:@"%.0f ℃", row.temperature];
     return cell;
 }

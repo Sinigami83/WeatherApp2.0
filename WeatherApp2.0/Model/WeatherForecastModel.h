@@ -29,6 +29,8 @@
 @property (nonatomic, strong) NSString *weatherType; //weather.main - Группа параметров погоды (Дождь, Снег, Экстрим и т.д.
 //other
 @property (nonatomic, assign) NSUInteger hour;
+@property (nonatomic, assign) NSUInteger day;
+
 
 - (instancetype)initWithServerResponse:(NSDictionary *)responseObject;
 

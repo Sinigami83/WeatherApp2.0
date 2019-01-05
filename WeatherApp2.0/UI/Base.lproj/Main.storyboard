@@ -51,7 +51,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-Y8-5t9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="120"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="119.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G1L-vg-4SV">
                                                         <size key="itemSize" width="100" height="120"/>
@@ -61,7 +61,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellWeatherByHour" id="KSw-vx-9nF" customClass="WeatherByHour">
-                                                            <rect key="frame" x="10" y="0.0" width="100" height="120"/>
+                                                            <rect key="frame" x="10" y="-0.5" width="100" height="120"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
@@ -136,15 +136,15 @@
                                             <outlet property="collectionView" destination="xrR-Y8-5t9" id="uP7-I2-wvX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherByDays" id="zlw-LK-WNP" customClass="WeatherByDays">
-                                        <rect key="frame" x="0.0" y="175.5" width="343" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherByDays" rowHeight="200" id="zlw-LK-WNP" customClass="WeatherByDays">
+                                        <rect key="frame" x="0.0" y="175.5" width="343" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zlw-LK-WNP" id="obD-8L-Gtk">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="efw-1k-zfH">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="120"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="199.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WeatherByDay" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherByDay" rowHeight="50" id="q3t-hz-hDe" customClass="WeatherByDay">
@@ -224,6 +224,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="WeatherByDayCellTableView" destination="efw-1k-zfH" id="dbB-yF-KIT"/>
+                                            <outlet property="weatherByDayCellTableView" destination="efw-1k-zfH" id="k0c-eT-AaS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
