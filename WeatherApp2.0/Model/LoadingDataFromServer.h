@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (LoadingDataFromServer *)sharedManager;
 
-- (void)getWeatherWithCity:(NSString *)city
+- (void)getWeatherWithCity:(NSNumber *)city
                  onSuccess:(nullable void(^)(NSArray *coutries))success
                  onFailure:(nullable void(^)(NSError *error))failure;
 

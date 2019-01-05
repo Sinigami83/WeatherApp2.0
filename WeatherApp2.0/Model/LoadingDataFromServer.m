@@ -34,16 +34,17 @@
     return self;
 }
 
-- (void)getWeatherWithCity:(NSString *)city
+- (void)getWeatherWithCity:(NSNumber *)cityID
                  onSuccess:(void(^)(NSArray *coutries))success
                  onFailure:(void(^)(NSError *error))failure
 {
-    NSString *stringURL = [NSString stringWithFormat:@"https://api.openweathermap.org/data/2.5/forecast?appid=bb87c4e7d376b1ad20e1cd1683c0824d&q=%@&units=metric&type=like&lang=en", city];
+    NSString *stringURL = [NSString stringWithFormat:@"https://api.openweathermap.org/data/2.5/forecast?appid=bb87c4e7d376b1ad20e1cd1683c0824d&id=%lu&units=metric&type=like&lang=en", cityID.integerValue];
     NSURL *url = [NSURL URLWithString:stringURL];
 
     NSURLSessionDataTask *dataTask =
     [self.session dataTaskWithURL:url
                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+
                     NSArray *weathersForCity = [self handleWeathersLoaded:data];
                     if (weathersForCity != nil) {
                         if (success != nil) {
@@ -66,7 +67,8 @@
                                                                  options:NSJSONReadingAllowFragments
                                                                    error:NULL];
     NSArray *weathers = [responseJSON objectForKey:@"list"];
-    
+    NSLog(@"JSON: %@", responseJSON);
+
     NSMutableArray<WeatherForecastModel *> *weatherForCity = [[NSMutableArray alloc] init];
     if (weathers == nil) {
         return nil;
