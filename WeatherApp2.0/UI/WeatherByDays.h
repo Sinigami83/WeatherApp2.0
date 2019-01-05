@@ -8,7 +8,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherByDays : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UITableView *WeatherByDayCellTableView;
 @end
 
 NS_ASSUME_NONNULL_END
