@@ -91,7 +91,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WeatherByHours* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    WeatherByHours* cell = [tableView dequeueReusableCellWithIdentifier:@"CellWeatherByHours"];
     cell.weatherForOneDay = self.dataForPrint[indexPath.section].rows;
     [cell.collectionView reloadData];
     return cell;
