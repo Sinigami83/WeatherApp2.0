@@ -6,5 +6,4 @@
 #import "WeatherByHour.h"
 
 @implementation WeatherByHour
-
 @end

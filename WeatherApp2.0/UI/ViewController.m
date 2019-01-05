@@ -8,6 +8,7 @@
 #import "WeatherForecastModel.h"
 #import "Section.h"
 #import "SectionRow.h"
+#import "WeatherByHours.h"
 
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -49,7 +50,6 @@
      }];
 }
 
-
 - (void)reloadData
 {
     NSMutableArray *sections = [NSMutableArray array];
@@ -79,6 +79,11 @@
 
 #pragma mark - Table view data source
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1; //[self.dataForPrint count];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
@@ -86,11 +91,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-
+    WeatherByHours* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.weatherForOneDay = self.dataForPrint[indexPath.section].rows;
+    [cell.collectionView reloadData];
     return cell;
 }
 
+#pragma mark - get
+
+- (NSArray *)weatherForCities
+{
+    if (!_weatherForCity) {
+        _weatherForCity = [[NSArray alloc] init];
+    }
+    return _weatherForCity;
+}
 
 #pragma mark - for compare
 

@@ -4,13 +4,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SectionRow.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherByHours : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) NSArray<SectionRow *> *weatherForOneDay;
 
+- (void)setCollectionView:(UICollectionView *)collectionView;
 @end
 
 NS_ASSUME_NONNULL_END
