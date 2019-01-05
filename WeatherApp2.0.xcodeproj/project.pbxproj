@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D518A2DC21E0EA18002BF0AB /* RowsForWeatherByDays.m in Sources */ = {isa = PBXBuildFile; fileRef = D518A2DB21E0EA18002BF0AB /* RowsForWeatherByDays.m */; };
+		D518A2E021E1056D002BF0AB /* RowsForWeatherDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = D518A2DF21E1056D002BF0AB /* RowsForWeatherDetail.m */; };
 		D58BD9FC21DF85F800509CAB /* WeatherByHours.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BD9FB21DF85F800509CAB /* WeatherByHours.m */; };
 		D58BD9FF21DF861E00509CAB /* WeatherByDays.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BD9FE21DF861E00509CAB /* WeatherByDays.m */; };
 		D58BDA0221DF864100509CAB /* WeatherDetailByToday.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BDA0121DF864100509CAB /* WeatherDetailByToday.m */; };
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		D518A2DB21E0EA18002BF0AB /* RowsForWeatherByDays.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RowsForWeatherByDays.m; sourceTree = "<group>"; };
 		D518A2DD21E0EB53002BF0AB /* RowsForWeatherByDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RowsForWeatherByDays.h; sourceTree = "<group>"; };
+		D518A2DE21E1056D002BF0AB /* RowsForWeatherDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RowsForWeatherDetail.h; sourceTree = "<group>"; };
+		D518A2DF21E1056D002BF0AB /* RowsForWeatherDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RowsForWeatherDetail.m; sourceTree = "<group>"; };
 		D58BD9FA21DF85F800509CAB /* WeatherByHours.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherByHours.h; sourceTree = "<group>"; };
 		D58BD9FB21DF85F800509CAB /* WeatherByHours.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherByHours.m; sourceTree = "<group>"; };
 		D58BD9FD21DF861E00509CAB /* WeatherByDays.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherByDays.h; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				D58BDA0A21DF8F8900509CAB /* RowsForWeatherByHours.m */,
 				D518A2DD21E0EB53002BF0AB /* RowsForWeatherByDays.h */,
 				D518A2DB21E0EA18002BF0AB /* RowsForWeatherByDays.m */,
+				D518A2DE21E1056D002BF0AB /* RowsForWeatherDetail.h */,
+				D518A2DF21E1056D002BF0AB /* RowsForWeatherDetail.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D518A2E021E1056D002BF0AB /* RowsForWeatherDetail.m in Sources */,
 				D5A3B96721DF67EB00022B45 /* ViewController.m in Sources */,
 				D58BD9FF21DF861E00509CAB /* WeatherByDays.m in Sources */,
 				D58BDA0821DF8AA400509CAB /* WeatherByDay.m in Sources */,

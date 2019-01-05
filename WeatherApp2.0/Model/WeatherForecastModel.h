@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSNumber *windSpeed; //wind.speedСкорость ветра. Единица измерения по умолчанию: метр / сек, метрика: метр / сек, империал: миль / час
 @property (nonatomic, strong) NSNumber *windDeg; //wind.deg Направление ветра, градусы (метеорологические)
 //dt
-@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSDate *date; //Время прогнозируемых данных, Unix, UTC
 //snow
 @property (nonatomic, strong) NSNumber *snow3h; //snow.3h Объем снега за последние 3 часа
 //main
@@ -22,7 +22,7 @@
 @property (nonatomic, strong) NSNumber *humidity; //main.humidity - Влажность,%
 @property (nonatomic, strong) NSNumber *pressure; //main.pressure - Атмосферное давление на уровне моря по умолчанию, гПа
 @property (nonatomic, strong) NSNumber *seaLevel; //main.sea_level - Атмосферное давление на уровне моря, гПа
-@property (nonatomic, assign) double temerature;
+@property (nonatomic, assign) double temerature; //Температура. Единица по умолчанию: Кельвин, Метрика: Цельсий, Империал: Фаренгейт.
 //weather
 @property (nonatomic, strong) NSString *weatherDescription; //weather.description -  Погодные условия в группе
 @property (nonatomic, strong) NSString *image;

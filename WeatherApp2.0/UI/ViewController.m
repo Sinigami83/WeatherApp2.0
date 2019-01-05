@@ -8,8 +8,10 @@
 #import "WeatherForecastModel.h"
 #import "RowsForWeatherByHours.h"
 #import "RowsForWeatherByDays.h"
+#import "RowsForWeatherDetail.h"
 #import "WeatherByHours.h"
 #import "WeatherByDays.h"
+#import "WeatherDetailByToday.h"
 
 
 #define NUMBER_OF_HOURS_FOR_PRINT 8
@@ -25,6 +27,7 @@
 @property (nonatomic, strong) NSArray<WeatherForecastModel *> *weatherForCity;
 @property (nonatomic, strong) NSArray<RowsForWeatherByHours *> *weatherForOneDay;
 @property (nonatomic, strong) NSArray<RowsForWeatherByDays *> *weatherForWeak;
+@property (nonatomic, strong) NSArray<RowsForWeatherDetail *> *weatherDetail;
 
 @end
 
@@ -58,6 +61,7 @@
 {
     self.weatherForOneDay = [self makeTableViewCellWeatherByHour];
     self.weatherForWeak = [self makeTableViewCellWeatherByDay];
+    self.weatherDetail = [self makeTableViewCellWeatherDetail];
 
     [self.tableView reloadData];
 }
@@ -112,11 +116,39 @@
     return rows;
 }
 
+- (NSArray *)makeTableViewCellWeatherDetail
+{
+    WeatherForecastModel *w = self.weatherForCity[0];
+
+    NSMutableArray *rows = [NSMutableArray array];
+
+    [rows addObject: [[RowsForWeatherDetail alloc] initWithWeatherDescription:@"Cloudiness, %"
+                                                                weatherDetail:w.clouds]];
+    [rows addObject: [[RowsForWeatherDetail alloc] initWithWeatherDescription:@"Wind speed. Unit Default: meter/sec"
+                                                                weatherDetail:w.windSpeed]];
+    [rows addObject: [[RowsForWeatherDetail alloc] initWithWeatherDescription:@"Wind direction, degrees (meteorological)"
+                                                                weatherDetail:w.windDeg]];
+    [rows addObject: [[RowsForWeatherDetail alloc] initWithWeatherDescription:@"Snow volume for last 3 hours"
+                                                                weatherDetail:w.snow3h]];
+    [rows addObject: [[RowsForWeatherDetail alloc] initWithWeatherDescription:@"Atmospheric pressure on the ground level, hPa"
+                                                                weatherDetail:w.grndLevel]];
+    [rows addObject: [[RowsForWeatherDetail alloc] initWithWeatherDescription:@"Humidity, %"
+                                                                weatherDetail:w.humidity]];
+    [rows addObject: [[RowsForWeatherDetail alloc] initWithWeatherDescription:@"Atmospheric pressure on the sea level by default, hPa"
+                                                                weatherDetail:w.pressure]];
+    [rows addObject: [[RowsForWeatherDetail alloc] initWithWeatherDescription:@"Atmospheric pressure on the sea level, hPa"
+                                                                weatherDetail:w.seaLevel]];
+    [rows addObject: [[RowsForWeatherDetail alloc] initWithWeatherDescription:@"Atmospheric pressure on the sea level, hPa"
+                                                                weatherDetail:[NSNumber numberWithDouble:w.temerature]]];
+
+    return rows;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -131,12 +163,17 @@
         cell.weatherForOneDay = self.weatherForOneDay;
         [cell.collectionView reloadData];
         return cell;
-    } else {//if (indexPath.row == 1 ) {
+    } else if (indexPath.section == 1) {
         WeatherByDays* cell = [tableView dequeueReusableCellWithIdentifier:@"WeatherByDays"];
         cell.weatherForWeek = self.weatherForWeak;
         [cell.weatherByDayCellTableView reloadData];
         return cell;
-    } 
+    } else {
+        WeatherDetailByToday* cell = [tableView dequeueReusableCellWithIdentifier:@"WeatherDetailByToday"];
+        cell.weatherDetailByToday = self.weatherDetail;
+        [cell.tableView reloadData];
+        return cell;
+    }
 }
 
 #pragma mark - get

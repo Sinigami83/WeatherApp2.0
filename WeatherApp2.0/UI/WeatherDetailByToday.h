@@ -8,7 +8,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherDetailByToday : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *weatherDetailByToday;
 @end
 
 NS_ASSUME_NONNULL_END
