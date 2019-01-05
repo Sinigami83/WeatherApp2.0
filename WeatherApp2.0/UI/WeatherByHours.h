@@ -4,14 +4,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SectionRow.h"
+#import "RowsForWeatherByHours.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherByHours : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) NSArray<SectionRow *> *weatherForOneDay;
+@property (nonatomic, strong) NSArray<RowsForWeatherByHours *> *weatherForOneDay;
 
 - (void)setCollectionView:(UICollectionView *)collectionView;
 @end

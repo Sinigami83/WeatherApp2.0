@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface SectionRow : NSObject
+@interface RowsForWeatherByHours : NSObject
 
 @property (nonatomic, assign) double temperature;
 @property (nonatomic, assign) NSUInteger hour;

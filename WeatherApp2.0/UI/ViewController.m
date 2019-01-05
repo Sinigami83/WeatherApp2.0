@@ -6,8 +6,7 @@
 #import "ViewController.h"
 #import "LoadingDataFromServer.h"
 #import "WeatherForecastModel.h"
-#import "Section.h"
-#import "SectionRow.h"
+#import "RowsForWeatherByHours.h"
 #import "WeatherByHours.h"
 #import "WeatherByDays.h"
 
@@ -21,8 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLable;
 @property (weak, nonatomic) IBOutlet UILabel *cityNameLable;
 @property (nonatomic, strong) NSNumber *cityID;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, strong) NSArray<WeatherForecastModel *> *weatherForCity;
-@property (nonatomic, strong) NSArray<SectionRow *> *dataForPrint;
+@property (nonatomic, strong) NSArray<RowsForWeatherByHours *> *dataForPrint;
 
 @end
 
@@ -32,7 +32,8 @@
     [super viewDidLoad];
 
     self.cityID = @524901;
-
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.dateFormatter.dateFormat = @"dd-MM-yyyy";
     [self getWeatherFromServer];
 }
 
@@ -52,6 +53,24 @@
 {
     self.dataForPrint = [self makeTableViewCellWeatherByHour];
 
+    NSMutableArray *sections = [NSMutableArray array];
+    NSMutableArray *rows = [NSMutableArray array];
+    
+    NSDate *weatherDate = self.weatherForCity[0].date;
+
+    for (WeatherForecastModel *w in self.weatherForCities) {
+        NSComparisonResult result = [self compareTwoDate:weatherDate secondDate:w.date];
+
+        if (result != NSOrderedSame) {
+            RowsForWeatherByHours *row = [[RowsForWeatherByHours alloc] init];
+            row.temperature = w.temerature;
+            row.hour = w.hour;
+            row.image = w.image;
+            [rows addObject:row];
+        }
+    }
+    self.dataForPrint = sections;
+
     [self.tableView reloadData];
 }
 
@@ -62,7 +81,7 @@
     for (int i = 0; i < NUMBER_OF_HOURS_FOR_PRINT; ++i) {
         WeatherForecastModel *w = self.weatherForCity[i];
 
-        SectionRow *row = [[SectionRow alloc] init];
+        RowsForWeatherByHours *row = [[RowsForWeatherByHours alloc] init];
         row.temperature = w.temerature;
         row.hour = w.hour;
         row.image = w.image;

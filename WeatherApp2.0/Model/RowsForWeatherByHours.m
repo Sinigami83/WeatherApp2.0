@@ -3,8 +3,8 @@
 //  Copyright © 2018 Home. All rights reserved.
 //
 
-#import "SectionRow.h"
+#import "RowsForWeatherByHours.h"
 
 
-@implementation SectionRow
+@implementation RowsForWeatherByHours
 @end

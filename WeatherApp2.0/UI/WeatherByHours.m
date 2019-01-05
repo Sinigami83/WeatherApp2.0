@@ -28,7 +28,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     WeatherByHour *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellWeatherByHour" forIndexPath:indexPath];
-    SectionRow *row = self.weatherForOneDay[indexPath.row];
+    RowsForWeatherByHours *row = self.weatherForOneDay[indexPath.row];
     NSString *hour = [NSString stringWithFormat:@"%lu", row.hour];
     cell.hourLable.text = hour;
     cell.iconImageView.image = [UIImage imageNamed:row.image]; ;
