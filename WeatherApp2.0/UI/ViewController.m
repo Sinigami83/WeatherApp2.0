@@ -12,6 +12,8 @@
 #import "WeatherByDays.h"
 
 
+#define NUMBER_OF_HOURS_FOR_PRINT 8
+
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -19,9 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLable;
 @property (weak, nonatomic) IBOutlet UILabel *cityNameLable;
 @property (nonatomic, strong) NSNumber *cityID;
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, strong) NSArray<WeatherForecastModel *> *weatherForCity;
-@property (nonatomic, strong) NSArray<Section *> *dataForPrint;
+@property (nonatomic, strong) NSArray<SectionRow *> *dataForPrint;
 
 @end
 
@@ -31,9 +32,6 @@
     [super viewDidLoad];
 
     self.cityID = @524901;
-
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"dd-MM-yyyy";
 
     [self getWeatherFromServer];
 }
@@ -52,30 +50,25 @@
 
 - (void)reloadData
 {
-    NSMutableArray *sections = [NSMutableArray array];
-    NSMutableArray *rows = [NSMutableArray array];
-    NSUInteger hours = 0;
+    self.dataForPrint = [self makeTableViewCellWeatherByHour];
 
-    NSDate *weatherDate = self.weatherForCity[0].date;
-    for (WeatherForecastModel *w in self.weatherForCity) {
-        if (hours == 8) {
-            Section *s = [[Section alloc] init];
-            s.title = [self.dateFormatter stringFromDate:weatherDate];
-            s.rows = rows;
-            [sections addObject:s];
-            weatherDate = w.date;
-            [rows removeAllObjects];
-            break;
-        }
+    [self.tableView reloadData];
+}
+
+- (NSArray *)makeTableViewCellWeatherByHour
+{
+    NSMutableArray *rows = [NSMutableArray array];
+
+    for (int i = 0; i < NUMBER_OF_HOURS_FOR_PRINT; ++i) {
+        WeatherForecastModel *w = self.weatherForCity[i];
+
         SectionRow *row = [[SectionRow alloc] init];
         row.temperature = w.temerature;
         row.hour = w.hour;
         row.image = w.image;
         [rows addObject:row];
-        ++hours;
     }
-    self.dataForPrint = sections;
-    [self.tableView reloadData];
+    return rows;
 }
 
 #pragma mark - Table view data source
@@ -94,7 +87,7 @@
 {
     if (indexPath.section == 0) {
         WeatherByHours *cell = [tableView dequeueReusableCellWithIdentifier:@"CellWeatherByHours"];
-        cell.weatherForOneDay = self.dataForPrint[indexPath.section].rows;
+        cell.weatherForOneDay = self.dataForPrint;
         [cell.collectionView reloadData];
         return cell;
     } else {//if (indexPath.row == 1 ) {
