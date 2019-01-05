@@ -20,6 +20,7 @@
 {
     self = [super init];
     if (self) {
+        //JSON field
         //clouds
         NSNumber *clouds = [[responseObject objectForKey:@"clouds"] objectForKey:@"all"];
         //wind
@@ -40,30 +41,32 @@
         NSNumber *tempertur = [main objectForKey:@"temp"];
         //weather
         NSArray *weather        = [responseObject objectForKey:@"weather"];
-        NSString *Description   = [weather[0] objectForKey:@"description"];
+        NSString *description   = [weather[0] objectForKey:@"description"];
         NSString *icon          = [weather[0] objectForKey:@"icon"];
-        NSString *Type          = [weather[0] objectForKey:@"main"];
+        NSString *type          = [weather[0] objectForKey:@"main"];
 
-
-
-        _date = [self currentDateForWeather:dateInString];
+        //JSON field
+        //clouds
+        _clouds     = clouds;
+        //wind
+        _windSpeed  = windSpeed;
+        _windDeg    = windDeg;
+        //dt
+        _date       = [self currentDateForWeather:dateInString];
+        //snow
+        _snow3h     = snow3h;
+        //main
+        _grndLevel  = grndLevel;
+        _humidity   = humidity;
+        _pressure   = pressure;
+        _seaLevel   = seaLevel;
         _temerature = [self temeratureOfWeather:tempertur numberFormatter:self.numberFormatter];
-        _hour = [self hourComponent:self.date currentCalendar:self.calendar];
-        _image = [NSString stringWithFormat:@"%@", icon];
-
-        /*
-        _pressure;
-        _sea_level;
-        _grnd_level;
-        _humidity;
-        _weatherType;
-        _weatherDescription;
-        _clouds;
-        _windSpeed;
-        _windDeg;
-        _snow33h;
-        */
-
+        //weather
+        _weatherDescription = description;
+        _image      = [NSString stringWithFormat:@"%@", icon];
+        _weatherType = type;
+        //other
+        _hour       = [self hourComponent:self.date currentCalendar:self.calendar];
     }
     return self;
 }
