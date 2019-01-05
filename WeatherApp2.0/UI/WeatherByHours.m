@@ -14,8 +14,8 @@
 - (void)setCollectionView:(UICollectionView *)collectionView
 {
     _collectionView = collectionView;
-    //collectionView.dataSource = self;
-    //collectionView.delegate = self;
+    collectionView.dataSource = self;
+    collectionView.delegate = self;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -27,7 +27,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    WeatherByHour *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    WeatherByHour *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellWeatherByHour" forIndexPath:indexPath];
     SectionRow *row = self.weatherForOneDay[indexPath.row];
     NSString *hour = [NSString stringWithFormat:@"%lu", row.hour];
     cell.hourLable.text = hour;

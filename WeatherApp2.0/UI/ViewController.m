@@ -21,7 +21,6 @@
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, strong) NSArray<WeatherForecastModel *> *weatherForCity;
 @property (nonatomic, strong) NSArray<Section *> *dataForPrint;
-@property (nonatomic, strong) NSArray<SectionRow *> *weatherForOneDay;
 
 @end
 

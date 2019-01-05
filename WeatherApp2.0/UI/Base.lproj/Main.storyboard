@@ -132,6 +132,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="xrR-Y8-5t9" secondAttribute="bottom" id="rfh-LX-15Q"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collectionView" destination="xrR-Y8-5t9" id="uP7-I2-wvX"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
