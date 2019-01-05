@@ -7,11 +7,6 @@
 
 
 @interface WeatherForecastModel ()
-
-@property (nonatomic, strong) NSDate *currentDate;
-@property (nonatomic, strong) NSNumberFormatter *numberFormatter;
-@property (nonatomic, strong) NSCalendar *calendar;
-
 @end
 
 @implementation WeatherForecastModel
@@ -60,13 +55,13 @@
         _humidity   = humidity;
         _pressure   = pressure;
         _seaLevel   = seaLevel;
-        _temerature = [self temeratureOfWeather:tempertur numberFormatter:self.numberFormatter];
+        _temerature = [self temeratureOfWeather:tempertur];
         //weather
         _weatherDescription = description;
         _image      = [NSString stringWithFormat:@"%@", icon];
         _weatherType = type;
         //other
-        _hour       = [self hourComponent:self.date currentCalendar:self.calendar];
+        _hour       = [self hourComponent:self.date];
     }
     return self;
 }
@@ -78,33 +73,23 @@
 
 - (NSNumberFormatter *)numberFormatter
 {
-    if (!_numberFormatter) {
-        _numberFormatter = self.numberFormatter = [[NSNumberFormatter alloc] init];
-        [self.numberFormatter setRoundingMode:NSNumberFormatterRoundUp];
-        [self.numberFormatter setMaximumFractionDigits:0];
-    }
-    return _numberFormatter;
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setRoundingMode:NSNumberFormatterRoundUp];
+    [numberFormatter setMaximumFractionDigits:0];
+    return numberFormatter;
 }
 
 - (double)temeratureOfWeather:(NSNumber *)temperature
-              numberFormatter:(NSNumberFormatter *)numberFormatter
 {
+    NSNumberFormatter *numberFormatter = [self numberFormatter];
     NSString *stringFromNumber = [numberFormatter stringFromNumber:temperature];
     return stringFromNumber.doubleValue;
 }
 
-- (NSCalendar *)calendar
-{
-    if (!_calendar) {
-        _calendar = [NSCalendar currentCalendar];
-    }
-    return _calendar;
-}
-
 - (NSUInteger)hourComponent:(NSDate *)date
-            currentCalendar:(NSCalendar *)currentCalendar
 {
-    NSDateComponents *hourComponent = [currentCalendar components:NSCalendarUnitHour
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *hourComponent = [calendar components:NSCalendarUnitHour
                                                          fromDate:date];
     return [hourComponent hour];
 }
