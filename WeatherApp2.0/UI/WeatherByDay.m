@@ -3,8 +3,7 @@
 //  Copyright © 2019 Home. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WeatherByDay.h"
 
-@interface ViewController : UIViewController
+@implementation WeatherByDay
 @end
-
